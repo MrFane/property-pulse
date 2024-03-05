@@ -3,8 +3,8 @@ import PropertyCard from "./PropertyCard";
 import Link from "next/link";
 
 const HomeProperties = async () => {
-  const properties = await fetchProperties();
-  const recentProperties = properties
+  const data = await fetchProperties();
+  const recentProperties = data.properties
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
 
@@ -16,7 +16,7 @@ const HomeProperties = async () => {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {recentProperties.lenght === 0 ? (
+            {data.properties.lenght === 0 ? (
               <p>No Properties Found</p>
             ) : (
               recentProperties.map((property) => (
